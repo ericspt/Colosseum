@@ -29,6 +29,11 @@ public class spellbook : MonoBehaviour
     public void spellbookIE()
     {
         declarations.z = 0;
+        for (int i = 0; i < 15; i ++)
+        {
+            declarations.spellSlots[i].GetComponent<Image>().sprite = null;
+            declarations.spellSlots[i].GetComponent<Image>().color = new Color(0.505f, 0.364f, 0.207f);
+        }
         for (int i = 0; i < declarations.skillsLength; i ++)
         {
             if (login.currentUser.p_knownSkills[i] == '1')
