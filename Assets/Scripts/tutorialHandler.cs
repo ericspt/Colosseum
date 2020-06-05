@@ -63,7 +63,7 @@ public class tutorialHandler : MonoBehaviour
         if (declarations.currentPageTutorial < 24)
         {
             declarations.currentText.text = tutorialTexts[declarations.currentPageTutorial];
-        }
+        } 
     }
     
 }
