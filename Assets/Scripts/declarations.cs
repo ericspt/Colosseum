@@ -268,8 +268,15 @@ public class declarations : MonoBehaviour {
     public static GameObject[] grayArrows = new GameObject[4];
     public GameObject[] grayArrowsNS = new GameObject[4];
     #endregion
+    #region Tutorial
+    public Text currentTextNS;
+    public GameObject tutorialNS;
+    public static Text currentText;
+    public static GameObject tutorial;
+    public static int currentPageTutorial;
+    #endregion
 
-    void Start () {
+    void Awake () {
 
         Screen.SetResolution(1366, 768, true);
 
@@ -1254,6 +1261,10 @@ public class declarations : MonoBehaviour {
             arrows[i] = arrowsNS[i];
             grayArrows[i] = grayArrowsNS[i];
         }
+        #endregion
+        #region Tutorial
+        currentText = currentTextNS;
+        tutorial = tutorialNS;
         #endregion
     }
 
