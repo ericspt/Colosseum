@@ -6772,7 +6772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9903a64f6b03d3c44a779c69af9743a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee36ee551064c0d42813151d3c13b67c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25436,7 +25436,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 32
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -25454,13 +25454,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5058824, g: 0.3647059, b: 0.20784314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6b7425dc3ca888f41b7be79a62222e3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37380,7 +37380,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 15ba911e9eb341e43927e8ed1735db91, type: 3}
   - {fileID: 21300000, guid: a61400d3327dca74b930188f28bf4a3f, type: 3}
   - {fileID: 21300000, guid: 3ebaabe326e52b04696f31721a2af5ab, type: 3}
-  - {fileID: 21300000, guid: 9903a64f6b03d3c44a779c69af9743a3, type: 3}
+  - {fileID: 21300000, guid: ee36ee551064c0d42813151d3c13b67c, type: 3}
   - {fileID: 21300000, guid: 744df5043722af046b97b95ecc19780a, type: 3}
   - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}
   - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}
@@ -37404,7 +37404,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 46a7511faffc9bf4e82ffa5858656ea3, type: 3}
   - {fileID: 21300000, guid: ea9ed6c7dd4a04f4788b6392605ddbd0, type: 3}
   - {fileID: 21300000, guid: 611b3c3d729e8da43880ddfbea394679, type: 3}
-  - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}
+  - {fileID: 21300000, guid: 6b7425dc3ca888f41b7be79a62222e3d, type: 3}
   - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}
   - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}
   - {fileID: 21300000, guid: 08dd4316b3b0ae04b863a63b91f8083e, type: 3}

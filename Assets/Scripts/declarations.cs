@@ -431,6 +431,25 @@ public class declarations : MonoBehaviour {
         items[0].i_usability = false;
         items[0].i_type = 3;
         #endregion
+        #region Crystal of Greed
+        items[31] = new Item
+        {
+            i_id = 32,
+            i_name = "Crystal of Greed",
+            i_description = "This crystal can be a powerful tool in fights. However, it is a double-edged sword.",
+            i_price = 300,
+            i_sprite = itemSpritesNS[31],
+            i_lvlreq = 4,
+            i_class = 0,
+            i_go = null,
+            i_equipability = true,
+            i_usability = false,
+            i_type = 3,
+            i_skillsLength = 0,
+            i_def = -2,
+            i_atk = 7
+        };
+        #endregion
         #endregion
         #region Weapons
         #region AK47
@@ -1313,6 +1332,10 @@ public class declarations : MonoBehaviour {
         {
             login.currentUser.p_atk += items[login.currentUser.p_eqw - 1].i_atk;
         }
+        if (login.currentUser.p_eqm != 0)
+        {
+            login.currentUser.p_atk += items[login.currentUser.p_eqm - 1].i_atk;
+        }
     }
 
     // Defense Calculation
@@ -1322,6 +1345,10 @@ public class declarations : MonoBehaviour {
         if (login.currentUser.p_eqa != 0)
         {
             login.currentUser.p_def += items[login.currentUser.p_eqa - 1].i_def;
+        }
+        if (login.currentUser.p_eqm != 0)
+        {
+            login.currentUser.p_def += items[login.currentUser.p_eqm - 1].i_def;
         }
     }
 
@@ -1333,6 +1360,10 @@ public class declarations : MonoBehaviour {
         {
             dataLoader.usersM[id - 1].p_atk += items[dataLoader.usersM[id - 1].p_eqw - 1].i_atk;
         }
+        if (dataLoader.usersM[id - 1].p_eqm != 0)
+        {
+            dataLoader.usersM[id - 1].p_atk += items[dataLoader.usersM[id - 1].p_eqm - 1].i_atk;
+        }
     }
 
     // Attack Calculation Other Player
@@ -1342,6 +1373,10 @@ public class declarations : MonoBehaviour {
         if (dataLoader.usersM[id - 1].p_eqa != 0)
         {
             dataLoader.usersM[id - 1].p_def += items[dataLoader.usersM[id - 1].p_eqa - 1].i_def;
+        }
+        if (dataLoader.usersM[id - 1].p_eqm != 0)
+        {
+            dataLoader.usersM[id - 1].p_def += items[dataLoader.usersM[id - 1].p_eqm - 1].i_def;
         }
     }
 }
