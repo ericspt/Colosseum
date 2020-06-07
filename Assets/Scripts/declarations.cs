@@ -223,6 +223,7 @@ public class declarations : MonoBehaviour {
     public static GameObject invisWBA;
     public static GameObject invisWS;
     public static GameObject topBarFight;
+    public static GameObject BAbutton;
     public GameObject[] fightPrefabsNS = new GameObject[100];
     public Text playerHPTextNS;
     public Text enemyHPTextNS;
@@ -235,6 +236,7 @@ public class declarations : MonoBehaviour {
     public GameObject invisWBANS;
     public GameObject invisWSNS;
     public GameObject topBarFightNS;
+    public GameObject BAbuttonNS;
     #endregion
     #region Match History
     public GameObject matchHistoryGONS;
@@ -267,6 +269,12 @@ public class declarations : MonoBehaviour {
     public Text scoreTextNS;
     public static GameObject[] grayArrows = new GameObject[4];
     public GameObject[] grayArrowsNS = new GameObject[4];
+    public static GameObject whiteAnim;
+    public GameObject whiteAnimNS;
+    public static GameObject yellowAnim;
+    public GameObject yellowAnimNS;
+    public static GameObject redAnim;
+    public GameObject redAnimNS;
     #endregion
     #region Tutorial
     public Text currentTextNS;
@@ -1253,6 +1261,7 @@ public class declarations : MonoBehaviour {
         invisWBA = invisWBANS;
         invisWS = invisWSNS;
         topBarFight = topBarFightNS;
+        BAbutton = BAbuttonNS;
         #endregion
         #region Match History
         matchHistoryGO = matchHistoryGONS;
@@ -1280,6 +1289,9 @@ public class declarations : MonoBehaviour {
             arrows[i] = arrowsNS[i];
             grayArrows[i] = grayArrowsNS[i];
         }
+        whiteAnim = whiteAnimNS;
+        yellowAnim = yellowAnimNS;
+        redAnim = redAnimNS;
         #endregion
         #region Tutorial
         currentText = currentTextNS;

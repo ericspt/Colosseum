@@ -131,9 +131,9 @@ public class fight : MonoBehaviour
         {
             scoreText.text = "";
             declarations.scoreText.text = "";
-            manipulatePanels(false);
-            declarations.score = 0;
             declarations.difficulty = moveId;
+            declarations.score = 0;
+            manipulatePanels(false);
             if (moveId == 1)
             {
                 yield return (StartCoroutine(spawnArrows()));
@@ -229,7 +229,7 @@ public class fight : MonoBehaviour
             }
             scoreText.gameObject.SetActive(true);
             declarations.scoreText.gameObject.SetActive(true);
-            declarations.scoreText.text = "0";
+            declarations.BAbutton.GetComponent<runArrows>().updateScore();
         }
         else
         {

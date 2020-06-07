@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.023529414, g: 0.023529414, b: 0.023529414, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:
@@ -37541,6 +37541,7 @@ MonoBehaviour:
   invisWBANS: {fileID: 1097474997}
   invisWSNS: {fileID: 1911874048}
   topBarFightNS: {fileID: 1513522281}
+  BAbuttonNS: {fileID: 18605664}
   matchHistoryGONS: {fileID: 811690362}
   spellSlotsNS:
   - {fileID: 1061292698}
@@ -37572,6 +37573,12 @@ MonoBehaviour:
   - {fileID: 1859239623}
   - {fileID: 2059462557}
   - {fileID: 672000503}
+  whiteAnimNS: {fileID: 7990690053086051523, guid: 2d8dd15f9517e4c4cbe0f22827fb57c6,
+    type: 3}
+  yellowAnimNS: {fileID: 4083070222414497360, guid: 96561e32c3d94d342a41c1d308b703a9,
+    type: 3}
+  redAnimNS: {fileID: 3203515352721453426, guid: d073cfa88367eeb45ad6a9e7cfeba145,
+    type: 3}
   currentTextNS: {fileID: 1809361472}
   tutorialNS: {fileID: 307162832}
 --- !u!224 &1927795791
