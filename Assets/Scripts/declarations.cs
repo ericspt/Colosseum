@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "0.1.3";
+    public static string version = "1.0.0";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
@@ -185,6 +185,7 @@ public class declarations : MonoBehaviour {
     #endregion
     #region Levels/maxXP
     public static int[] maxXP = new int[100];
+    public static int numberOfLevels = 20;
     #endregion
     #region Items
     public static Item[] items = new Item[1000];
@@ -418,9 +419,22 @@ public class declarations : MonoBehaviour {
         maxXP[1] = 50;
         maxXP[2] = 125;
         maxXP[3] = 225;
-        maxXP[4] = 375;
-        maxXP[5] = 600;
-        maxXP[6] = 99999;
+        maxXP[4] = 350;
+        maxXP[5] = 500;
+        maxXP[6] = 675;
+        maxXP[7] = 875;
+        maxXP[8] = 1100;
+        maxXP[9] = 1350;
+        maxXP[10] = 1625;
+        maxXP[11] = 1925;
+        maxXP[12] = 2250;
+        maxXP[13] = 2600;
+        maxXP[14] = 2975;
+        maxXP[15] = 3375;
+        maxXP[16] = 3800;
+        maxXP[17] = 4250;
+        maxXP[18] = 4725;
+        maxXP[19] = 5225;
         #endregion
         #region Items
         #region Medallions
@@ -1312,7 +1326,7 @@ public class declarations : MonoBehaviour {
     public static int playerLvl (int playerXp)
     {
         int currentPlayerLvlInt = 0;
-        for (int j = 0; j < 6; j++)
+        for (int j = 0; j < numberOfLevels; j++)
         {
             if (playerXp >= maxXP[j] && playerXp < maxXP[j + 1])
             {

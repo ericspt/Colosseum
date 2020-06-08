@@ -22,11 +22,11 @@ public class runArrows : MonoBehaviour
         {
             declarations.scoreText.text += "/100";
         }
-        if (declarations.difficulty == 2)
+        else if (declarations.difficulty == 2)
         {
             declarations.scoreText.text += "/200";
         }
-        if (declarations.difficulty == 3)
+        else
         {
             declarations.scoreText.text += "/400";
         }
