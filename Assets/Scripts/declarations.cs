@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "1.0.0";
+    public static string version = "1.0.2";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
@@ -571,7 +571,7 @@ public class declarations : MonoBehaviour {
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 10
+            i_atk = 13
         };
         items[3].i_skills = new Skill[items[3].i_skillsLength];
         #region Skill 0 - Death Potion
@@ -644,7 +644,7 @@ public class declarations : MonoBehaviour {
             i_id = 6,
             i_name = "Magic Staff",
             i_description = "A very powerful mage staff able to cast many spells. This is a must for all mage beginners.",
-            i_price = 700,
+            i_price = 600,
             i_sprite = itemSpritesNS[5],
             i_lvlreq = 1,
             i_class = 3,
@@ -726,7 +726,7 @@ public class declarations : MonoBehaviour {
             i_id = 8,
             i_name = "Bow",
             i_description = "A basic ninja bow with pretty cool abilities. Nice to have.",
-            i_price = 300,
+            i_price = 600,
             i_sprite = itemSpritesNS[7],
             i_lvlreq = 1,
             i_class = 4,
@@ -735,7 +735,7 @@ public class declarations : MonoBehaviour {
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 9
+            i_atk = 14
         };
         items[7].i_skills = new Skill[items[7].i_skillsLength];
         #region Skill 0 - Toxic Arrow
@@ -767,7 +767,7 @@ public class declarations : MonoBehaviour {
             i_id = 9,
             i_name = "Katana",
             i_description = "Dash'n'Slash with this awesome katana. It has a few skills.",
-            i_price = 500,
+            i_price = 300,
             i_sprite = itemSpritesNS[8],
             i_lvlreq = 1,
             i_class = 4,
@@ -776,7 +776,7 @@ public class declarations : MonoBehaviour {
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 12
+            i_atk = 10
         };
         items[8].i_skills = new Skill[items[8].i_skillsLength];
         #region Skill 0 - Fast Slice

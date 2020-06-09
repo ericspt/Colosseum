@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c8e81b28b58a94381f527341676bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFightPanel: {fileID: 0}
+  startFightButton: {fileID: 0}
   scoreText: {fileID: 1275380320}
 --- !u!114 &18605667
 MonoBehaviour:
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -21930,7 +21930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c8e81b28b58a94381f527341676bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFightPanel: {fileID: 0}
+  startFightButton: {fileID: 0}
   scoreText: {fileID: 1275380320}
 --- !u!114 &1149972805
 MonoBehaviour:
@@ -21945,7 +21945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -25060,7 +25060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c8e81b28b58a94381f527341676bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFightPanel: {fileID: 0}
+  startFightButton: {fileID: 0}
   scoreText: {fileID: 1275380320}
 --- !u!114 &1298566438
 MonoBehaviour:
@@ -25075,7 +25075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -32029,7 +32029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c8e81b28b58a94381f527341676bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startFightPanel: {fileID: 0}
+  startFightButton: {fileID: 1694584721}
   scoreText: {fileID: 1275380320}
 --- !u!114 &1694584724
 MonoBehaviour:

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class fight : MonoBehaviour
 {
 
-    public GameObject startFightPanel;
+    public GameObject startFightButton;
     public static UserM currentEnemy;
     public static UserM[] usersS = new UserM[dataLoader.usersLength];
     public Text scoreText;
@@ -108,7 +108,7 @@ public class fight : MonoBehaviour
         currentEnemy = dataLoader.usersM[enemyId];
         StartCoroutine(addGameIE());
         StartCoroutine(Camera.main.GetComponent<declarations>().uploadAndSetDataIE());
-        startFightPanel.SetActive(false);
+        startFightButton.SetActive(false);
         declarations.topBarFight.SetActive(true);
         declarations.playerModel = Instantiate(declarations.classes[login.currentUser.p_class - 1].c_model, new Vector3(0f, 2f, -30f), Quaternion.Euler(0f, 0f, 0f));
         declarations.enemyModel = Instantiate(declarations.classes[currentEnemy.p_class - 1].c_model, new Vector3(0f, 2f, 20f), Quaternion.Euler(180f, 0f, 180f));
@@ -138,20 +138,20 @@ public class fight : MonoBehaviour
             {
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().walkAndPunch(1)));
-                declarations.enemyHP -= declarations.score * (declarations.classes[login.currentUser.p_class - 1].c_atk / 10.0f) / 100;
+                declarations.enemyHP -= declarations.score * (declarations.classes[login.currentUser.p_class - 1].c_atk / 5.0f) / 100;
             }
             else if (moveId == 2)
             {
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().attack(login.currentUser.p_eqw, 1)));
-                declarations.enemyHP -= (declarations.score / 2) * (login.currentUser.p_atk / 10.0f) / 100;
+                declarations.enemyHP -= (declarations.score / 2) * (login.currentUser.p_atk / 5.0f) / 100;
             }
             else
             {
                 declarations.difficulty += declarations.possibleSkills[declarations.randomSkill].s_difficulty;
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().skill(declarations.possibleSkills[declarations.randomSkill].s_name)));
-                declarations.enemyHP -= (declarations.score / 4) * (login.currentUser.p_atk / 10.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg) / 100;
+                declarations.enemyHP -= (declarations.score / 4) * (login.currentUser.p_atk / 5.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg) / 100;
             }
             updateHP();
             if (declarations.enemyHP <= 0f)
@@ -183,20 +183,20 @@ public class fight : MonoBehaviour
             if (enemyMoveId == 1)
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().walkAndPunch(-1)));
-                float normalAttack = declarations.classes[currentEnemy.p_class - 1].c_atk / 10.0f;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 10.0f), normalAttack);
+                float normalAttack = declarations.classes[currentEnemy.p_class - 1].c_atk / 5.0f;
+                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 20.0f), normalAttack);
             }
             else if (enemyMoveId == 2)
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().attack(currentEnemy.p_eqw, -1)));
-                float normalAttack = currentEnemy.p_atk / 10.0f;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 20.0f), normalAttack);
+                float normalAttack = currentEnemy.p_atk / 5.0f;
+                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 40.0f), normalAttack);
             }
             else if (enemyMoveId == 3)
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().skill(declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_name)));
-                float normalAttack = currentEnemy.p_atk / 10.0f + declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_dmg;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 40.0f), normalAttack);
+                float normalAttack = currentEnemy.p_atk / 5.0f + declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_dmg;
+                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 60.0f), normalAttack - (normalAttack / 20.0f));
             }
             else
             {
@@ -265,10 +265,10 @@ public class fight : MonoBehaviour
     }
     public void updatePossibleOutcomes ()
     {
-        declarations.BAtext.text = "Deal up to: " + (declarations.classes[login.currentUser.p_class - 1].c_atk / 10.0f).ToString("F2");
+        declarations.BAtext.text = "Deal up to: " + (declarations.classes[login.currentUser.p_class - 1].c_atk / 5.0f).ToString("F2");
         if (login.currentUser.p_eqw != 0)
         {
-            declarations.WBAtext.text = "Deal up to: " + (login.currentUser.p_atk / 10.0f).ToString("F2");
+            declarations.WBAtext.text = "Deal up to: " + (login.currentUser.p_atk / 5.0f).ToString("F2");
             declarations.invisWBA.SetActive(false);
             int z = 0;
             bool skillFound = false;
@@ -285,7 +285,7 @@ public class fight : MonoBehaviour
                 declarations.invisWS.SetActive(false);
                 declarations.randomSkill = (int)Math.Floor(UnityEngine.Random.Range(0f, z));
                 declarations.WS_SkillNametext.text = declarations.possibleSkills[declarations.randomSkill].s_name;
-                declarations.WStext.text = "Deal up to: " + (login.currentUser.p_atk / 10.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg).ToString("F2");
+                declarations.WStext.text = "Deal up to: " + (login.currentUser.p_atk / 5.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg).ToString("F2");
             }
         }
     }

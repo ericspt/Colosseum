@@ -36,7 +36,7 @@ public class runArrows : MonoBehaviour
     {
         float min = 1300f;
         bool arrowFound = false;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             for (int i = 0; i < declarations.numberOfArrows; i++)
             {
@@ -55,7 +55,7 @@ public class runArrows : MonoBehaviour
                 updateScore();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             for (int i = 0; i < declarations.numberOfArrows; i++)
             {
@@ -75,7 +75,7 @@ public class runArrows : MonoBehaviour
                 updateScore();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             for (int i = 0; i < declarations.numberOfArrows; i++)
             {
@@ -95,7 +95,7 @@ public class runArrows : MonoBehaviour
                 updateScore();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             for (int i = 0; i < declarations.numberOfArrows; i++)
             {
@@ -143,7 +143,7 @@ public class runArrows : MonoBehaviour
 
     public int scoring(float myY, float grayY, GameObject obj)
     {
-        if (Math.Abs(myY - grayY) <= 20f)
+        if (Math.Abs(myY - grayY) <= 30f)
         {
             GameObject neww = Instantiate(declarations.redAnim, obj.transform.position, Quaternion.identity, declarations.canvas.transform);
             return 5;
