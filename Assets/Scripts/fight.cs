@@ -121,6 +121,7 @@ public class fight : MonoBehaviour
         declarations.enemyModel.transform.localScale = new Vector3(7f, 7f, 7f);
         declarations.playerHP = login.currentUser.p_def;
         declarations.enemyHP = currentEnemy.p_def;
+        declarations.turnPanel.transform.localScale = new Vector3(1f, 1f, 1f);
         updateHP();
         updatePossibleOutcomes();
     }

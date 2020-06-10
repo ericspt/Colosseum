@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "1.0.3";
+    public static string version = "1.0.3.1";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
