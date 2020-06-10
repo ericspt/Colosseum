@@ -11,6 +11,11 @@ public class fight : MonoBehaviour
     public static UserM currentEnemy;
     public static UserM[] usersS = new UserM[dataLoader.usersLength];
     public Text scoreText;
+
+    private int cashIfYouWin = 90;
+    private int xpIfYouWin = 25;
+    private int cashIfYouLose = 10;
+    private int xpIfYouLose = 5;
     
     public static void updateUsersLvlArray ()
     {
@@ -146,7 +151,7 @@ public class fight : MonoBehaviour
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().attack(login.currentUser.p_eqw, 1)));
                 declarations.enemyHP -= (declarations.score / 2) * (login.currentUser.p_atk / 5.0f) / 100;
             }
-            else
+            else if (moveId == 3)
             {
                 declarations.difficulty += declarations.possibleSkills[declarations.randomSkill].s_difficulty;
                 yield return (StartCoroutine(spawnArrows()));
@@ -190,7 +195,7 @@ public class fight : MonoBehaviour
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().attack(currentEnemy.p_eqw, -1)));
                 float normalAttack = currentEnemy.p_atk / 5.0f;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 40.0f), normalAttack);
+                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 30.0f), normalAttack);
             }
             else if (enemyMoveId == 3)
             {
@@ -270,6 +275,7 @@ public class fight : MonoBehaviour
         {
             declarations.WBAtext.text = "Deal up to: " + (login.currentUser.p_atk / 5.0f).ToString("F2");
             declarations.invisWBA.SetActive(false);
+            declarations.WBAbutton.SetActive(true);
             int z = 0;
             bool skillFound = false;
             for (int i = 0; i < declarations.skillsLength; i ++)
@@ -283,6 +289,7 @@ public class fight : MonoBehaviour
             if (skillFound == true)
             {
                 declarations.invisWS.SetActive(false);
+                declarations.SAbutton.SetActive(true);
                 declarations.randomSkill = (int)Math.Floor(UnityEngine.Random.Range(0f, z));
                 declarations.WS_SkillNametext.text = declarations.possibleSkills[declarations.randomSkill].s_name;
                 declarations.WStext.text = "Deal up to: " + (login.currentUser.p_atk / 5.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg).ToString("F2");
@@ -298,8 +305,8 @@ public class fight : MonoBehaviour
         matchHistory.won = 0;
         matchHistory.day = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
         login.currentUser.p_played++;
-        login.currentUser.p_cash += 10;
-        login.currentUser.p_xp += 5;
+        login.currentUser.p_cash += cashIfYouLose;
+        login.currentUser.p_xp += xpIfYouLose;
         yield return StartCoroutine(Camera.main.GetComponent<matchHistory>().UploadGame());
     }
     public IEnumerator finishGame (int gameFinalStatus)
@@ -312,21 +319,24 @@ public class fight : MonoBehaviour
         Destroy(declarations.playerModel);
         Destroy(declarations.enemyModel);
         manipulatePanels(true);
+        declarations.turnPanel.transform.localScale = new Vector3(0f, 0f, 0f);
         if (gameFinalStatus == 1)
         {
             login.currentUser.p_won++;
-            login.currentUser.p_cash += 50;
-            login.currentUser.p_xp += 20;
+            login.currentUser.p_cash += (cashIfYouWin - cashIfYouLose);
+            login.currentUser.p_xp += (xpIfYouWin - xpIfYouLose);
             matchHistory.matchID = login.currentUser.p_played - 1;
             declarations.loadingPanel.SetActive(true);
             yield return StartCoroutine(Camera.main.GetComponent<matchHistory>().UpdateWonGame());
 
             declarations.wonPanel.SetActive(true);
+            declarations.wonText.text = "You defeated " + currentEnemy.p_name + "!\n" + "Cash: +" + cashIfYouWin + "\nXP: +" + xpIfYouWin;
             yield return (StartCoroutine(Camera.main.GetComponent<declarations>().uploadAndSetDataIE()));
         }
         else
         {
             declarations.lostPanel.SetActive(true);
+            declarations.loseText.text = "You lost against " + currentEnemy.p_name + ".\n" + "Cash: +" + cashIfYouLose + "\nXP: +" + xpIfYouLose;
             yield return (StartCoroutine(Camera.main.GetComponent<declarations>().uploadAndSetDataIE()));
         }
         declarations.turnPanel.SetActive(false);

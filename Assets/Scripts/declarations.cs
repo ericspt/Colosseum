@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "1.0.2";
+    public static string version = "1.0.3";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
@@ -225,6 +225,10 @@ public class declarations : MonoBehaviour {
     public static GameObject invisWS;
     public static GameObject topBarFight;
     public static GameObject BAbutton;
+    public static GameObject WBAbutton;
+    public static GameObject SAbutton;
+    public static Text wonText;
+    public static Text loseText;
     public GameObject[] fightPrefabsNS = new GameObject[100];
     public Text playerHPTextNS;
     public Text enemyHPTextNS;
@@ -238,6 +242,10 @@ public class declarations : MonoBehaviour {
     public GameObject invisWSNS;
     public GameObject topBarFightNS;
     public GameObject BAbuttonNS;
+    public GameObject WBAbuttonNS;
+    public GameObject SAbuttonNS;
+    public Text wonTextNS;
+    public Text loseTextNS;
     #endregion
     #region Match History
     public GameObject matchHistoryGONS;
@@ -480,9 +488,9 @@ public class declarations : MonoBehaviour {
             i_id = 2,
             i_name = "AK47 Rifle",
             i_description = "A very powerful rifle only wearable by soldiers. This ranged weapon is a must in any fight.",
-            i_price = 500,
+            i_price = 600,
             i_sprite = itemSpritesNS[1],
-            i_lvlreq = 1,
+            i_lvlreq = 4,
             i_class = 1,
             i_go = itemModels[1],
             i_equipability = true,
@@ -530,7 +538,7 @@ public class declarations : MonoBehaviour {
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 10
+            i_atk = 8
         };
         items[2].i_skills = new Skill[items[2].i_skillsLength];
         #region Skill 0 - Fast Stab
@@ -562,9 +570,9 @@ public class declarations : MonoBehaviour {
             i_id = 4,
             i_name = "Toxic Potion",
             i_description = "An extremely toxic potion. Can be used by mad scientists to irradiate their enemies.",
-            i_price = 500,
+            i_price = 600,
             i_sprite = itemSpritesNS[3],
-            i_lvlreq = 1,
+            i_lvlreq = 4,
             i_class = 2,
             i_go = itemModels[3],
             i_equipability = true,
@@ -644,7 +652,7 @@ public class declarations : MonoBehaviour {
             i_id = 6,
             i_name = "Magic Staff",
             i_description = "A very powerful mage staff able to cast many spells. This is a must for all mage beginners.",
-            i_price = 600,
+            i_price = 400,
             i_sprite = itemSpritesNS[5],
             i_lvlreq = 1,
             i_class = 3,
@@ -653,7 +661,7 @@ public class declarations : MonoBehaviour {
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 12
+            i_atk = 8
         };
         items[5].i_skills = new Skill[items[5].i_skillsLength];
         #region Skill 0 - Fireballs
@@ -685,7 +693,7 @@ public class declarations : MonoBehaviour {
             i_id = 7,
             i_name = "Shuriken",
             i_description = "Little, but hurtful. The ninja shurikens can deal a great amount of damage if used properly.",
-            i_price = 200,
+            i_price = 300,
             i_sprite = itemSpritesNS[6],
             i_lvlreq = 1,
             i_class = 4,
@@ -726,16 +734,16 @@ public class declarations : MonoBehaviour {
             i_id = 8,
             i_name = "Bow",
             i_description = "A basic ninja bow with pretty cool abilities. Nice to have.",
-            i_price = 600,
+            i_price = 1500,
             i_sprite = itemSpritesNS[7],
-            i_lvlreq = 1,
+            i_lvlreq = 7,
             i_class = 4,
             i_go = itemModels[7],
             i_equipability = true,
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 14
+            i_atk = 20
         };
         items[7].i_skills = new Skill[items[7].i_skillsLength];
         #region Skill 0 - Toxic Arrow
@@ -767,16 +775,16 @@ public class declarations : MonoBehaviour {
             i_id = 9,
             i_name = "Katana",
             i_description = "Dash'n'Slash with this awesome katana. It has a few skills.",
-            i_price = 300,
+            i_price = 600,
             i_sprite = itemSpritesNS[8],
-            i_lvlreq = 1,
+            i_lvlreq = 4,
             i_class = 4,
             i_go = itemModels[8],
             i_equipability = true,
             i_usability = false,
             i_type = 1,
             i_skillsLength = 2,
-            i_atk = 10
+            i_atk = 15
         };
         items[8].i_skills = new Skill[items[8].i_skillsLength];
         #region Skill 0 - Fast Slice
@@ -810,7 +818,7 @@ public class declarations : MonoBehaviour {
             i_id = 10,
             i_name = "Rapid Fire Scroll",
             i_description = "Using this scroll will make you learn the Rapid Fire skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 1,
             i_class = 1,
@@ -827,7 +835,7 @@ public class declarations : MonoBehaviour {
             i_id = 11,
             i_name = "Mega Bullets Scroll",
             i_description = "Using this scroll will make you learn the Mega Bullets skill.",
-            i_price = 2000,
+            i_price = 1800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 1,
@@ -844,7 +852,7 @@ public class declarations : MonoBehaviour {
             i_id = 12,
             i_name = "Fast Stab Scroll",
             i_description = "Using this scroll will make you learn the Fast Stab skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 1,
             i_class = 1,
@@ -861,7 +869,7 @@ public class declarations : MonoBehaviour {
             i_id = 13,
             i_name = "Fire Stab Scroll",
             i_description = "Using this scroll will make you learn the Fire Stab skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 1,
@@ -878,7 +886,7 @@ public class declarations : MonoBehaviour {
             i_id = 14,
             i_name = "Death Potion Scroll",
             i_description = "Using this scroll will make you learn the Death Potion skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 1,
             i_class = 2,
@@ -895,7 +903,7 @@ public class declarations : MonoBehaviour {
             i_id = 15,
             i_name = "Mega Potion Scroll",
             i_description = "Using this scroll will make you learn the Mega Potion skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 2,
@@ -914,7 +922,7 @@ public class declarations : MonoBehaviour {
             i_description = "Using this scroll will make you learn the Toxic Syringe skill.",
             i_price = 1000,
             i_sprite = itemSpritesNS[9],
-            i_lvlreq = 5,
+            i_lvlreq = 1,
             i_class = 2,
             i_go = null,
             i_skillsLength = 0,
@@ -929,7 +937,7 @@ public class declarations : MonoBehaviour {
             i_id = 17,
             i_name = "Fire Syringe Scroll",
             i_description = "Using this scroll will make you learn the Fire Syringe skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 2,
@@ -946,9 +954,9 @@ public class declarations : MonoBehaviour {
             i_id = 18,
             i_name = "Fireballs Scroll",
             i_description = "Using this scroll will make you learn the Fireballs skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
-            i_lvlreq = 1,
+            i_lvlreq = 2,
             i_class = 3,
             i_go = null,
             i_skillsLength = 0,
@@ -963,7 +971,7 @@ public class declarations : MonoBehaviour {
             i_id = 19,
             i_name = "Lightnings Scroll",
             i_description = "Using this scroll will make you learn the Lightnings skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 3,
@@ -997,7 +1005,7 @@ public class declarations : MonoBehaviour {
             i_id = 21,
             i_name = "Double Shuriken Scroll",
             i_description = "Using this scroll will make you learn the Double Shuriken skill.",
-            i_price = 1600,
+            i_price = 1200,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 3,
             i_class = 4,
@@ -1014,7 +1022,7 @@ public class declarations : MonoBehaviour {
             i_id = 22,
             i_name = "Toxic Arrow Scroll",
             i_description = "Using this scroll will make you learn the Toxic Arrow skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 1,
             i_class = 4,
@@ -1031,7 +1039,7 @@ public class declarations : MonoBehaviour {
             i_id = 23,
             i_name = "Fire Arrow Scroll",
             i_description = "Using this scroll will make you learn the Fire Arrow skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 4,
@@ -1048,7 +1056,7 @@ public class declarations : MonoBehaviour {
             i_id = 24,
             i_name = "Fast Slice Scroll",
             i_description = "Using this scroll will make you learn the Fast Slice skill.",
-            i_price = 1000,
+            i_price = 800,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 1,
             i_class = 4,
@@ -1065,7 +1073,7 @@ public class declarations : MonoBehaviour {
             i_id = 25,
             i_name = "Multislash Scroll",
             i_description = "Using this scroll will make you learn the Multislash skill.",
-            i_price = 2000,
+            i_price = 1600,
             i_sprite = itemSpritesNS[9],
             i_lvlreq = 5,
             i_class = 4,
@@ -1213,7 +1221,7 @@ public class declarations : MonoBehaviour {
             c_id = 0,
             c_name = "Soldier",
             c_atk = 104,
-            c_def = 100,
+            c_def = 103,
             c_hp = 100,
             c_sprite = classSpriteNS[0],
             c_spriteHead = classSpriteHead[0],
@@ -1276,6 +1284,10 @@ public class declarations : MonoBehaviour {
         invisWS = invisWSNS;
         topBarFight = topBarFightNS;
         BAbutton = BAbuttonNS;
+        wonText = wonTextNS;
+        loseText = loseTextNS;
+        WBAbutton = WBAbuttonNS;
+        SAbutton = SAbuttonNS;
         #endregion
         #region Match History
         matchHistoryGO = matchHistoryGONS;

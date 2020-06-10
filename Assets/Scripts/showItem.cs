@@ -53,6 +53,8 @@ public class showItem : MonoBehaviour {
             {
                 Skill theSkill = declarations.skills[mapScrollIdToSkillId(theItem)];
                 declarations.itemDescription.text += "\n\nDamage: " + theSkill.s_dmg;
+                declarations.itemDescription.text += "\nWeapon: " + declarations.items[theSkill.s_weapon].i_name;
+                declarations.itemDescription.text += "\nDifficulty: " + (theSkill.s_difficulty * 10).ToString();
                 print(theSkill.s_name);
             }
             declarations.useItemButton.SetActive(false);

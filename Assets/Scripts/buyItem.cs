@@ -41,6 +41,8 @@ public class buyItem : MonoBehaviour {
             {
                 Skill theSkill = declarations.skills[mapScrollIdToSkillId(theItem)];
                 declarations.itemDescriptionBuy.text += "\n\n" + "Damage: " + theSkill.s_dmg;
+                declarations.itemDescriptionBuy.text += "\nWeapon: " + declarations.items[theSkill.s_weapon].i_name;
+                declarations.itemDescriptionBuy.text += "\nDifficulty: " + (theSkill.s_difficulty * 10).ToString();
             }
             declarations.itemPrice.text = "Price: " + declarations.items[id - 1].i_price.ToString();
             declarations.itemLvlReqBuy.text = "Level required: " + declarations.items[id - 1].i_lvlreq.ToString();

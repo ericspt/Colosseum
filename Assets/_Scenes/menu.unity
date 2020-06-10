@@ -2074,6 +2074,9 @@ GameObject:
   - component: {fileID: 534321493}
   - component: {fileID: 534321492}
   - component: {fileID: 534321496}
+  - component: {fileID: 534321495}
+  - component: {fileID: 534321498}
+  - component: {fileID: 534321497}
   m_Layer: 5
   m_Name: optionsButton
   m_TagString: Untagged
@@ -2192,6 +2195,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534321490}
   m_CullTransparentMesh: 0
+--- !u!114 &534321495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534321490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &534321496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,6 +2219,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82337360c9627ef4ab724ea7c0a56277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &534321497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534321490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &534321498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534321490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534321495}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: spawnPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Options
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534321495}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: destroyPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Options
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &573992713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,6 +2746,7 @@ GameObject:
   - component: {fileID: 638199502}
   - component: {fileID: 638199504}
   - component: {fileID: 638199505}
+  - component: {fileID: 638199506}
   m_Layer: 5
   m_Name: loginButton
   m_TagString: Untagged
@@ -2834,6 +2907,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 638199506}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: spawnPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Play
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -2841,6 +2926,18 @@ MonoBehaviour:
         - m_Target: {fileID: 638199505}
           m_TargetAssemblyTypeName: pSystem, Assembly-CSharp
           m_MethodName: stopPSystem
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 638199506}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: destroyPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2875,6 +2972,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pSys: {fileID: 938864774}
+--- !u!114 &638199506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638199497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &669914401
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,8 +4293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A new update is available! Please get it from our Discord server. Thank
-    you for playing and supporting our game! :)
+  m_Text: "A new update is available! Please get it from our website :) \nwww.playcolosseum.com"
 --- !u!222 &888654342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12406,6 +12514,8 @@ GameObject:
   - component: {fileID: 1308228812}
   - component: {fileID: 1308228811}
   - component: {fileID: 1308228810}
+  - component: {fileID: 1308228816}
+  - component: {fileID: 1308228815}
   m_Layer: 5
   m_Name: quitButton
   m_TagString: Untagged
@@ -12548,6 +12658,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308228808}
   m_CullTransparentMesh: 0
+--- !u!114 &1308228815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308228808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1308228816}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: spawnPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Logout
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1308228816}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: destroyPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Logout
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1308228816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308228808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315320689
 GameObject:
   m_ObjectHideFlags: 0
@@ -12639,6 +12806,9 @@ GameObject:
   - component: {fileID: 1362045936}
   - component: {fileID: 1362045935}
   - component: {fileID: 1362045938}
+  - component: {fileID: 1362045942}
+  - component: {fileID: 1362045940}
+  - component: {fileID: 1362045939}
   m_Layer: 5
   m_Name: registerButton
   m_TagString: Untagged
@@ -12767,6 +12937,75 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cf6cb9db32609a4ea6430429c48ee4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1362045939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362045933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1362045940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362045933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1362045942}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: spawnPanel
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Register
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1362045942}
+          m_TargetAssemblyTypeName: spawnInfoPanel, Assembly-CSharp
+          m_MethodName: destroyPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Register
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1362045942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362045933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b8a4ad8b27c0418db05530c5c9fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1385446000
@@ -15127,7 +15366,7 @@ Canvas:
   m_GameObject: {fileID: 1818313081}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1919459637}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -16359,6 +16598,11 @@ MonoBehaviour:
   invisWBANS: {fileID: 0}
   invisWSNS: {fileID: 0}
   topBarFightNS: {fileID: 0}
+  BAbuttonNS: {fileID: 0}
+  WBAbuttonNS: {fileID: 0}
+  SAbuttonNS: {fileID: 0}
+  wonTextNS: {fileID: 0}
+  loseTextNS: {fileID: 0}
   matchHistoryGONS: {fileID: 0}
   spellSlotsNS:
   - {fileID: 0}
@@ -16390,6 +16634,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  whiteAnimNS: {fileID: 0}
+  yellowAnimNS: {fileID: 0}
+  redAnimNS: {fileID: 0}
+  currentTextNS: {fileID: 0}
+  tutorialNS: {fileID: 0}
 --- !u!114 &1919459641
 MonoBehaviour:
   m_ObjectHideFlags: 0
