@@ -24,6 +24,10 @@ public class shopPageManagement : MonoBehaviour
             declarations.shopPages4[i].SetActive(false);
         }
     }
+    public void updateCurrentPageText()
+    {
+        declarations.currentPageText.text = "Page: " + (declarations.currentPage + 1).ToString() + "/" + (declarations.categorySizes[declarations.currentCategory - 1]).ToString();
+    }
     public void changeCategory (int category)
     {
         declarations.currentCategory = category;
@@ -71,6 +75,7 @@ public class shopPageManagement : MonoBehaviour
                 declarations.shopPages4[declarations.currentPage + 1].SetActive(true);
             }
             declarations.currentPage++;
+            updateCurrentPageText();
         }
     }
     public void changePageLeft()
@@ -98,6 +103,7 @@ public class shopPageManagement : MonoBehaviour
                 declarations.shopPages4[declarations.currentPage - 1].SetActive(true);
             }
             declarations.currentPage--;
+            updateCurrentPageText();
         }
     }
 }

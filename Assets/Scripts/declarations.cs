@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "1.0.3.1";
+    public static string version = "1.1.0.1";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
@@ -44,6 +44,8 @@ public class declarations : MonoBehaviour {
     public static float audioSliderMusicValue;
     public static Slider audioSliderMusicVolume;
     public static GameObject infoHover;
+    public static int resWidth;
+    public static int resHeight;
     public Canvas canvasNS;
     public GameObject errorPanelNS;
     public Text errorPanelTextNS;
@@ -90,6 +92,7 @@ public class declarations : MonoBehaviour {
     public static Text itemPrice;
     public static Text itemLvlReqBuy;
     public static Text itemClassesBuy;
+    public static Text currentPageText;
     public GameObject confirmBuyItemButtonNS;
     public GameObject buyItemButtonNS;
     public GameObject buyItemPanelNS;
@@ -98,6 +101,7 @@ public class declarations : MonoBehaviour {
     public Text itemPriceNS;
     public Text itemLvlReqBuyNS;
     public Text itemClassesBuyNS;
+    public Text currentPageTextNS;
     #endregion
     #region Item inventory
     public static GameObject confirmUseItemButton;
@@ -205,6 +209,7 @@ public class declarations : MonoBehaviour {
     #endregion
     #region Fight
     public static GameObject[] fightPrefabs = new GameObject[100];
+    public static Sprite[] scrollClass = new Sprite[4];
     public static GameObject playerModel;
     public static GameObject enemyModel;
     public static Skill[] possibleSkills = new Skill[60];
@@ -229,7 +234,10 @@ public class declarations : MonoBehaviour {
     public static GameObject SAbutton;
     public static Text wonText;
     public static Text loseText;
+    public static Text whatHeDid;
+    public static Image fightScrollImage;
     public GameObject[] fightPrefabsNS = new GameObject[100];
+    public Sprite[] scrollClassNS = new Sprite[4];
     public Text playerHPTextNS;
     public Text enemyHPTextNS;
     public Text enemyNameTextNS;
@@ -246,6 +254,8 @@ public class declarations : MonoBehaviour {
     public GameObject SAbuttonNS;
     public Text wonTextNS;
     public Text loseTextNS;
+    public Text whatHeDidNS;
+    public Image fightScrollImageNS;
     #endregion
     #region Match History
     public GameObject matchHistoryGONS;
@@ -295,7 +305,10 @@ public class declarations : MonoBehaviour {
 
     void Awake () {
 
-        Screen.SetResolution(1366, 768, true);
+        //Screen.SetResolution(1366, 768, true);
+
+        resWidth = Screen.currentResolution.width;
+        resHeight = Screen.currentResolution.height;
 
         #region Main Menu
         loginPanel = loginPanelNS;
@@ -350,6 +363,7 @@ public class declarations : MonoBehaviour {
         itemPrice = itemPriceNS;
         itemLvlReqBuy = itemLvlReqBuyNS;
         itemClassesBuy = itemClassesBuyNS;
+        currentPageText = currentPageTextNS;
         #endregion
         #region Item inventory
         confirmUseItemButton = confirmUseItemButtonNS;
@@ -836,7 +850,7 @@ public class declarations : MonoBehaviour {
             i_name = "Mega Bullets Scroll",
             i_description = "Using this scroll will make you learn the Mega Bullets skill.",
             i_price = 1800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[10],
             i_lvlreq = 5,
             i_class = 1,
             i_go = null,
@@ -853,7 +867,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fast Stab Scroll",
             i_description = "Using this scroll will make you learn the Fast Stab skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[11],
             i_lvlreq = 1,
             i_class = 1,
             i_go = null,
@@ -870,7 +884,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fire Stab Scroll",
             i_description = "Using this scroll will make you learn the Fire Stab skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[12],
             i_lvlreq = 5,
             i_class = 1,
             i_go = null,
@@ -887,7 +901,7 @@ public class declarations : MonoBehaviour {
             i_name = "Death Potion Scroll",
             i_description = "Using this scroll will make you learn the Death Potion skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[13],
             i_lvlreq = 1,
             i_class = 2,
             i_go = null,
@@ -904,7 +918,7 @@ public class declarations : MonoBehaviour {
             i_name = "Mega Potion Scroll",
             i_description = "Using this scroll will make you learn the Mega Potion skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[14],
             i_lvlreq = 5,
             i_class = 2,
             i_go = null,
@@ -921,7 +935,7 @@ public class declarations : MonoBehaviour {
             i_name = "Toxic Syringe Scroll",
             i_description = "Using this scroll will make you learn the Toxic Syringe skill.",
             i_price = 1000,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[15],
             i_lvlreq = 1,
             i_class = 2,
             i_go = null,
@@ -938,7 +952,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fire Syringe Scroll",
             i_description = "Using this scroll will make you learn the Fire Syringe skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[16],
             i_lvlreq = 5,
             i_class = 2,
             i_go = null,
@@ -955,7 +969,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fireballs Scroll",
             i_description = "Using this scroll will make you learn the Fireballs skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[17],
             i_lvlreq = 2,
             i_class = 3,
             i_go = null,
@@ -972,7 +986,7 @@ public class declarations : MonoBehaviour {
             i_name = "Lightnings Scroll",
             i_description = "Using this scroll will make you learn the Lightnings skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[18],
             i_lvlreq = 5,
             i_class = 3,
             i_go = null,
@@ -989,7 +1003,7 @@ public class declarations : MonoBehaviour {
             i_name = "Ice Shuriken Scroll",
             i_description = "Using this scroll will make you learn the Ice Shuriken skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[19],
             i_lvlreq = 1,
             i_class = 4,
             i_go = null,
@@ -1006,7 +1020,7 @@ public class declarations : MonoBehaviour {
             i_name = "Double Shuriken Scroll",
             i_description = "Using this scroll will make you learn the Double Shuriken skill.",
             i_price = 1200,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[20],
             i_lvlreq = 3,
             i_class = 4,
             i_go = null,
@@ -1023,7 +1037,7 @@ public class declarations : MonoBehaviour {
             i_name = "Toxic Arrow Scroll",
             i_description = "Using this scroll will make you learn the Toxic Arrow skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[21],
             i_lvlreq = 1,
             i_class = 4,
             i_go = null,
@@ -1040,7 +1054,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fire Arrow Scroll",
             i_description = "Using this scroll will make you learn the Fire Arrow skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[22],
             i_lvlreq = 5,
             i_class = 4,
             i_go = null,
@@ -1057,7 +1071,7 @@ public class declarations : MonoBehaviour {
             i_name = "Fast Slice Scroll",
             i_description = "Using this scroll will make you learn the Fast Slice skill.",
             i_price = 800,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[23],
             i_lvlreq = 1,
             i_class = 4,
             i_go = null,
@@ -1074,7 +1088,7 @@ public class declarations : MonoBehaviour {
             i_name = "Multislash Scroll",
             i_description = "Using this scroll will make you learn the Multislash skill.",
             i_price = 1600,
-            i_sprite = itemSpritesNS[9],
+            i_sprite = itemSpritesNS[24],
             i_lvlreq = 5,
             i_class = 4,
             i_go = null,
@@ -1273,6 +1287,10 @@ public class declarations : MonoBehaviour {
         {
             fightPrefabs[i] = fightPrefabsNS[i];
         }
+        for (int i = 0; i < 4; i ++)
+        {
+            scrollClass[i] = scrollClassNS[i];
+        }
         playerHPText = playerHPTextNS;
         enemyHPText = enemyHPTextNS;
         turnPanel = turnPanelNS;
@@ -1288,6 +1306,8 @@ public class declarations : MonoBehaviour {
         loseText = loseTextNS;
         WBAbutton = WBAbuttonNS;
         SAbutton = SAbuttonNS;
+        whatHeDid = whatHeDidNS;
+        fightScrollImage = fightScrollImageNS;
         #endregion
         #region Match History
         matchHistoryGO = matchHistoryGONS;

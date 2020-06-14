@@ -42,6 +42,7 @@ public class showItem : MonoBehaviour {
         else
         {
             declarations.buttonsTBR[id - 1].GetComponent<Image>().sprite = null;
+            print(idConversion(id) - 1);
             declarations.buttonsTBR[id - 1].GetComponent<Image>().sprite = declarations.items[idConversion(id) - 1].i_sprite;
             declarations.buttonsTBR[id - 1].GetComponent<Image>().color = Color.white;
             lastItemSelected = idConversion(id);
@@ -53,7 +54,7 @@ public class showItem : MonoBehaviour {
             {
                 Skill theSkill = declarations.skills[mapScrollIdToSkillId(theItem)];
                 declarations.itemDescription.text += "\n\nDamage: " + theSkill.s_dmg;
-                declarations.itemDescription.text += "\nWeapon: " + declarations.items[theSkill.s_weapon].i_name;
+                declarations.itemDescription.text += "\nWeapon: " + declarations.items[theSkill.s_weapon - 1].i_name;
                 declarations.itemDescription.text += "\nDifficulty: " + (theSkill.s_difficulty * 10).ToString();
                 print(theSkill.s_name);
             }
@@ -75,6 +76,8 @@ public class showItem : MonoBehaviour {
                 {
                     declarations.itemDescription.text += "\nDefense: " + theItem.i_def.ToString();
                 }
+                declarations.itemDescription.text += "\nLevel required: " + theItem.i_lvlreq.ToString();
+                declarations.itemDescription.text += "\nClasses: " + classConvertToString(theItem.i_class);
                 declarations.useItemButton.SetActive(true);
                 if ((theItem.i_type == 1 && login.currentUser.p_eqw == 0) || (theItem.i_type == 2 && login.currentUser.p_eqa == 0) || (theItem.i_type == 3 && login.currentUser.p_eqm == 0))
                 {
@@ -95,53 +98,87 @@ public class showItem : MonoBehaviour {
         }
     }
 
+    private string classConvertToString(int classId)
+    {
+        if (classId == 1)
+        {
+            return "Soldier";
+        }
+        else if (classId == 2)
+        {
+            return "Mad Scientist";
+        }
+        else if (classId == 3)
+        {
+            return "Mage";
+        }
+        else if (classId == 4)
+        {
+            return "Ninja";
+        }
+        return "All";
+    }
+
     public void useTheItem ()
     {
         StartCoroutine(useItem());
     }
     public IEnumerator useItem()
     {
-        declarations.loadingPanel.SetActive(true);
-        Item theItem = declarations.items[lastItemSelected - 1];
-        // Equip
-        if (theItem.i_equipability == true)
+        if (declarations.playerLvl(login.currentUser.p_xp) < declarations.items[lastItemSelected - 1].i_lvlreq)
         {
-            if (declarations.useItemText.text == "Equip")
+            declarations.errorPanel.SetActive(true);
+            declarations.errorPanelText.text = "You can't use this item because your level is too small!";
+        }
+        else if (declarations.items[lastItemSelected - 1].i_class != 0 && declarations.items[lastItemSelected - 1].i_class != login.currentUser.p_class)
+        {
+            declarations.errorPanel.SetActive(true);
+            declarations.errorPanelText.text = "You can't use this item because it was not designed for your class!";
+        }
+        else
+        {
+            declarations.loadingPanel.SetActive(true);
+            Item theItem = declarations.items[lastItemSelected - 1];
+            // Equip
+            if (theItem.i_equipability == true)
             {
-                if ((theItem.i_type == 1 && login.currentUser.p_eqw != 0) || (theItem.i_type == 2 && login.currentUser.p_eqa != 0) || (theItem.i_type == 3 && login.currentUser.p_eqm != 0))
+                if (declarations.useItemText.text == "Equip")
                 {
-                    declarations.errorPanel.SetActive(true);
-                    declarations.errorPanelText.text = "An item of this type is already equipped!";
+                    if ((theItem.i_type == 1 && login.currentUser.p_eqw != 0) || (theItem.i_type == 2 && login.currentUser.p_eqa != 0) || (theItem.i_type == 3 && login.currentUser.p_eqm != 0))
+                    {
+                        declarations.errorPanel.SetActive(true);
+                        declarations.errorPanelText.text = "An item of this type is already equipped!";
+                    }
+                    // Actually equip the item
+                    else if ((theItem.i_type == 1 && login.currentUser.p_eqw == 0) || (theItem.i_type == 2 && login.currentUser.p_eqa == 0) || (theItem.i_type == 3 && login.currentUser.p_eqm == 0))
+                    {
+                        declarations.itemEquipped.text = "Status: Equipped";
+                        declarations.useItemText.text = "Unequip";
+                        equipItem(theItem);
+                    }
                 }
-                // Actually equip the item
-                else if ((theItem.i_type == 1 && login.currentUser.p_eqw == 0) || (theItem.i_type == 2 && login.currentUser.p_eqa == 0) || (theItem.i_type == 3 && login.currentUser.p_eqm == 0))
+                else
                 {
-                    declarations.itemEquipped.text = "Status: Equipped";
-                    declarations.useItemText.text = "Unequip";
-                    equipItem(theItem);
+                    declarations.itemEquipped.text = "Status: Not Equipped";
+                    declarations.useItemText.text = "Equip";
+                    equipItem(new Item());
                 }
             }
             else
             {
-                declarations.itemEquipped.text = "Status: Not Equipped";
-                declarations.useItemText.text = "Equip";
-                equipItem(new Item());
-            }
-        }
-        else
-        {
-            if (theItem.i_type == 4)
-            {
-                StringBuilder sb = new StringBuilder (login.currentUser.p_knownSkills);
-                sb[mapScrollIdToSkillId(theItem)] = '1';
-                login.currentUser.p_knownSkills = sb.ToString();
-            }
+                if (theItem.i_type == 4)
+                {
+                    StringBuilder sb = new StringBuilder(login.currentUser.p_knownSkills);
+                    sb[mapScrollIdToSkillId(theItem)] = '1';
+                    login.currentUser.p_knownSkills = sb.ToString();
+                }
 
-            yield return (StartCoroutine(deleteItem(lastItemSelected)));
+                yield return (StartCoroutine(deleteItem(lastItemSelected)));
+            }
+            yield return (StartCoroutine(Camera.main.GetComponent<declarations>().uploadAndSetDataIE()));
+            declarations.loadingPanel.SetActive(false);
+            declarations.useItemPanel.SetActive(false);
         }
-        yield return (StartCoroutine(Camera.main.GetComponent<declarations>().uploadAndSetDataIE()));
-        declarations.loadingPanel.SetActive(false);
-        declarations.useItemPanel.SetActive(false);
     }
 
     public static int mapScrollIdToSkillId (Item scroll)
@@ -179,8 +216,17 @@ public class showItem : MonoBehaviour {
     private void equipItem (Item item)
     {
         Item theItem = declarations.items[lastItemSelected - 1];
-
-        if (theItem.i_type == 1)
+        if (declarations.playerLvl(login.currentUser.p_xp) < declarations.items[lastItemSelected - 1].i_lvlreq && item.i_id != 0)
+        {
+            declarations.errorPanel.SetActive(true);
+            declarations.errorPanelText.text = "You can't equip this item because your level is too small!";
+        }
+        else if (declarations.items[lastItemSelected - 1].i_class != 0 && declarations.items[lastItemSelected - 1].i_class != login.currentUser.p_class && item.i_id != 0)
+        {
+            declarations.errorPanel.SetActive(true);
+            declarations.errorPanelText.text = "You can't equip this item because it was not designed for your class!";
+        }
+        else if (theItem.i_type == 1)
         {
             login.currentUser.p_eqw = item.i_id;
             //declarations.currentPlayerWeaponButton.GetComponent<Image>().sprite = theItem.i_sprite;

@@ -10,7 +10,6 @@ public class fight : MonoBehaviour
     public GameObject startFightButton;
     public static UserM currentEnemy;
     public static UserM[] usersS = new UserM[dataLoader.usersLength];
-    public Text scoreText;
 
     private int cashIfYouWin = 90;
     private int xpIfYouWin = 25;
@@ -121,6 +120,8 @@ public class fight : MonoBehaviour
         declarations.enemyModel.transform.localScale = new Vector3(7f, 7f, 7f);
         declarations.playerHP = login.currentUser.p_def;
         declarations.enemyHP = currentEnemy.p_def;
+        declarations.SAbutton.GetComponent<Image>().sprite = declarations.scrollClass[login.currentUser.p_class - 1];
+        declarations.SAbutton.GetComponent<Image>().color = Color.white;
         declarations.turnPanel.transform.localScale = new Vector3(1f, 1f, 1f);
         updateHP();
         updatePossibleOutcomes();
@@ -132,10 +133,11 @@ public class fight : MonoBehaviour
     }
     public IEnumerator changeTurnsIE (int moveId)
     {
-        
+
+        float damage = 0f, enemyDamage = 0f;
+
         if (declarations.playerHP > 0f && declarations.enemyHP > 0f)
         {
-            scoreText.text = "";
             declarations.scoreText.text = "";
             declarations.difficulty = moveId;
             declarations.score = 0;
@@ -144,20 +146,32 @@ public class fight : MonoBehaviour
             {
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().walkAndPunch(1)));
-                declarations.enemyHP -= declarations.score * (declarations.classes[login.currentUser.p_class - 1].c_atk / 5.0f) / 100;
+                damage = declarations.score * (declarations.classes[login.currentUser.p_class - 1].c_atk / 5.0f) / 100;
+                if (damage >= 0)
+                {
+                    declarations.enemyHP -= damage;
+                }
             }
             else if (moveId == 2)
             {
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().attack(login.currentUser.p_eqw, 1)));
-                declarations.enemyHP -= (declarations.score / 2) * (login.currentUser.p_atk / 5.0f) / 100;
+                damage = (declarations.score / 2) *(login.currentUser.p_atk / 5.0f) / 100;
+                if (damage >= 0)
+                {
+                    declarations.enemyHP -= damage;
+                }
             }
             else if (moveId == 3)
             {
                 declarations.difficulty += declarations.possibleSkills[declarations.randomSkill].s_difficulty;
                 yield return (StartCoroutine(spawnArrows()));
                 //yield return (StartCoroutine(declarations.playerModel.GetComponent<Animation_1>().skill(declarations.possibleSkills[declarations.randomSkill].s_name)));
-                declarations.enemyHP -= (declarations.score / 4) * (login.currentUser.p_atk / 5.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg) / 100;
+                damage = (declarations.score / 4) * (login.currentUser.p_atk / 5.0f + declarations.possibleSkills[declarations.randomSkill].s_dmg) / 100;
+                if (damage >= 0)
+                {
+                    declarations.enemyHP -= damage;
+                }
             }
             updateHP();
             if (declarations.enemyHP <= 0f)
@@ -190,25 +204,48 @@ public class fight : MonoBehaviour
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().walkAndPunch(-1)));
                 float normalAttack = declarations.classes[currentEnemy.p_class - 1].c_atk / 5.0f;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 20.0f), normalAttack);
+                enemyDamage = UnityEngine.Random.Range(normalAttack - (normalAttack / 20.0f), normalAttack);
+                declarations.playerHP -= enemyDamage;
             }
             else if (enemyMoveId == 2)
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().attack(currentEnemy.p_eqw, -1)));
                 float normalAttack = currentEnemy.p_atk / 5.0f;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 30.0f), normalAttack);
+                enemyDamage = UnityEngine.Random.Range(normalAttack - (normalAttack / 30.0f), normalAttack);
+                declarations.playerHP -= enemyDamage;
             }
             else if (enemyMoveId == 3)
             {
                 //yield return (StartCoroutine(declarations.enemyModel.GetComponent<Animation_1>().skill(declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_name)));
                 float normalAttack = currentEnemy.p_atk / 5.0f + declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_dmg;
-                declarations.playerHP -= UnityEngine.Random.Range(normalAttack - (normalAttack / 60.0f), normalAttack - (normalAttack / 20.0f));
-            }
-            else
-            {
-                print("NINO NINOO NINOOO");
+                enemyDamage = UnityEngine.Random.Range(normalAttack - (normalAttack / 60.0f), normalAttack - (normalAttack / 20.0f));
+                declarations.playerHP -= enemyDamage;
             }
             updateHP();
+            if (moveId == 1)
+            {
+                declarations.whatHeDid.text = "You dealt " + damage.ToString("0.##") + " using a basic attack.";
+            }
+            if (moveId == 2)
+            {
+                declarations.whatHeDid.text = "You dealt " + damage.ToString("0.##") + " using a weapon attack.";
+            }
+            if (moveId == 3)
+            {
+                declarations.whatHeDid.text = "You dealt " + damage.ToString("0.##") + " using " + declarations.possibleSkills[declarations.randomSkill].s_name + ".";
+            }
+            if (enemyMoveId == 1)
+            {
+                declarations.whatHeDid.text += "\n\n" + currentEnemy.p_name + " dealt " + enemyDamage.ToString("0.##") + " using a basic attack.";
+            }
+            if (enemyMoveId == 2)
+            {
+                declarations.whatHeDid.text += "\n\n" + currentEnemy.p_name + " dealt " + enemyDamage.ToString("0.##") + " using a weapon attack.";
+            }
+            if (enemyMoveId == 3)
+            {
+                declarations.whatHeDid.text += "\n\n" + currentEnemy.p_name + " dealt " + enemyDamage.ToString("0.##") + " using " + declarations.enemyPossibleSkills[declarations.enemyRandomSkill].s_name + ".";
+            }
             if (declarations.playerHP <= 0f)
             {
                 yield return (StartCoroutine(finishGame(0)));
@@ -233,7 +270,6 @@ public class fight : MonoBehaviour
             {
                 declarations.grayArrows[i].SetActive(true);
             }
-            scoreText.gameObject.SetActive(true);
             declarations.scoreText.gameObject.SetActive(true);
             declarations.BAbutton.GetComponent<runArrows>().updateScore();
         }
@@ -244,7 +280,6 @@ public class fight : MonoBehaviour
             {
                 declarations.grayArrows[i].SetActive(false);
             }
-            scoreText.gameObject.SetActive(false);
             declarations.scoreText.gameObject.SetActive(false);
             declarations.scoreText.text = "";
         }
@@ -440,28 +475,28 @@ public class fight : MonoBehaviour
     {
         declarations.arrowArray[declarations.numberOfArrows] = new Arrow();
         declarations.arrowArray[declarations.numberOfArrows].type = 3;
-        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[3], new Vector2(908f, 1000f), Quaternion.identity, declarations.canvas.transform);
+        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[3], new Vector2(declarations.grayArrows[3].transform.position.x, 1000f), Quaternion.identity, declarations.canvas.transform);
         declarations.numberOfArrows++;
     }
     public void generateDown()
     {
         declarations.arrowArray[declarations.numberOfArrows] = new Arrow();
         declarations.arrowArray[declarations.numberOfArrows].type = 2;
-        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[2], new Vector2(758f, 1000f), Quaternion.identity, declarations.canvas.transform);
+        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[2], new Vector2(declarations.grayArrows[2].transform.position.x, 1000f), Quaternion.identity, declarations.canvas.transform);
         declarations.numberOfArrows++;
     }
     public void generateUp()
     {
         declarations.arrowArray[declarations.numberOfArrows] = new Arrow();
         declarations.arrowArray[declarations.numberOfArrows].type = 1;
-        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[1], new Vector2(608f, 1000f), Quaternion.identity, declarations.canvas.transform);
+        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[1], new Vector2(declarations.grayArrows[1].transform.position.x, 1000f), Quaternion.identity, declarations.canvas.transform);
         declarations.numberOfArrows++;
     }
     public void generateLeft()
     {
         declarations.arrowArray[declarations.numberOfArrows] = new Arrow();
         declarations.arrowArray[declarations.numberOfArrows].type = 0;
-        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[0], new Vector2(458f, 1000f), Quaternion.identity, declarations.canvas.transform);
+        declarations.arrowArray[declarations.numberOfArrows].thisObj = Instantiate(declarations.arrows[0], new Vector2(declarations.grayArrows[0].transform.position.x, 1000f), Quaternion.identity, declarations.canvas.transform);
         declarations.numberOfArrows++;
     }
 }

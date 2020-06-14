@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class runArrows : MonoBehaviour
 {
     float gy;
-    public Text scoreText;
 
     void Start()
     {
@@ -71,7 +70,6 @@ public class runArrows : MonoBehaviour
             if (arrowFound == false)
             {
                 declarations.score -= 5;
-                scoreText.text = "- 5";
                 updateScore();
             }
         }
@@ -91,7 +89,6 @@ public class runArrows : MonoBehaviour
             if (arrowFound == false)
             {
                 declarations.score -= 5;
-                scoreText.text = "- 5";
                 updateScore();
             }
         }
@@ -112,7 +109,6 @@ public class runArrows : MonoBehaviour
             if (arrowFound == false)
             {
                 declarations.score -= 5;
-                scoreText.text = "- 5";
                 updateScore();
             }
         }
@@ -125,7 +121,6 @@ public class runArrows : MonoBehaviour
                     Destroy(declarations.arrowArray[i].thisObj);
                     declarations.arrowArray[i].deleted = true;
                     declarations.score -= 3;
-                    scoreText.text = "- 3";
                     updateScore();
                 }
                 if (declarations.arrowArray[i].id == min)
@@ -134,7 +129,6 @@ public class runArrows : MonoBehaviour
                     declarations.arrowArray[i].deleted = true;
                     int valueScore = scoring(declarations.arrowArray[i].thisObj.transform.position.y, gy, declarations.arrowArray[i].thisObj);
                     declarations.score += valueScore;
-                    scoreText.text = "+ " + valueScore;
                     updateScore();
                 }
             }

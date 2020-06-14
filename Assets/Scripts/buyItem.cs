@@ -41,7 +41,7 @@ public class buyItem : MonoBehaviour {
             {
                 Skill theSkill = declarations.skills[mapScrollIdToSkillId(theItem)];
                 declarations.itemDescriptionBuy.text += "\n\n" + "Damage: " + theSkill.s_dmg;
-                declarations.itemDescriptionBuy.text += "\nWeapon: " + declarations.items[theSkill.s_weapon].i_name;
+                declarations.itemDescriptionBuy.text += "\nWeapon: " + declarations.items[theSkill.s_weapon - 1].i_name;
                 declarations.itemDescriptionBuy.text += "\nDifficulty: " + (theSkill.s_difficulty * 10).ToString();
             }
             declarations.itemPrice.text = "Price: " + declarations.items[id - 1].i_price.ToString();
@@ -81,16 +81,6 @@ public class buyItem : MonoBehaviour {
         {
             declarations.errorPanel.SetActive(true);
             declarations.errorPanelText.text = "Your inventory is full!";
-        }
-        else if (declarations.playerLvl (login.currentUser.p_xp) < declarations.items [lastItemSelectedId - 1].i_lvlreq)
-        {
-            declarations.errorPanel.SetActive(true);
-            declarations.errorPanelText.text = "You can't buy this item because your level is too small!";
-        }
-        else if (declarations.items [lastItemSelectedId - 1].i_class != 0 && declarations.items[lastItemSelectedId - 1].i_class != login.currentUser.p_class)
-        {
-            declarations.errorPanel.SetActive(true);
-            declarations.errorPanelText.text = "You can't buy this item because it was not designed for your class!";
         }
         else
         {

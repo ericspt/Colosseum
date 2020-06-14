@@ -63,7 +63,7 @@ public class spellbook : MonoBehaviour
             declarations.spellDescription.text = theSkill.s_description;
             declarations.spellDescription.text += "\n\n";
             declarations.spellDescription.text += "Damage: " + theSkill.s_dmg.ToString();
-            declarations.spellDescription.text += "\nWeapon: " + declarations.items[theSkill.s_weapon].i_name;
+            declarations.spellDescription.text += "\nWeapon: " + declarations.items[theSkill.s_weapon - 1].i_name;
             declarations.spellDescription.text += "\nDifficulty: " + (theSkill.s_difficulty * 10).ToString();
         }
     }
