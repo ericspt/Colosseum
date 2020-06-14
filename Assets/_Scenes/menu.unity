@@ -16282,6 +16282,7 @@ MonoBehaviour:
   itemPriceNS: {fileID: 0}
   itemLvlReqBuyNS: {fileID: 0}
   itemClassesBuyNS: {fileID: 0}
+  currentPageTextNS: {fileID: 0}
   confirmUseItemButtonNS: {fileID: 0}
   useItemButtonNS: {fileID: 0}
   useItemButtonTextNS: {fileID: 0}
@@ -16325,12 +16326,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   xpLeaderboardNS:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  wrLeaderboardNS:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentPlayerRankNS: {fileID: 0}
   buttonsTBRNS:
   - {fileID: 0}
   - {fileID: 0}
@@ -16587,6 +16598,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  scrollClassNS:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerHPTextNS: {fileID: 0}
   enemyHPTextNS: {fileID: 0}
   enemyNameTextNS: {fileID: 0}
@@ -16603,6 +16619,8 @@ MonoBehaviour:
   SAbuttonNS: {fileID: 0}
   wonTextNS: {fileID: 0}
   loseTextNS: {fileID: 0}
+  whatHeDidNS: {fileID: 0}
+  fightScrollImageNS: {fileID: 0}
   matchHistoryGONS: {fileID: 0}
   spellSlotsNS:
   - {fileID: 0}

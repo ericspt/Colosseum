@@ -210,6 +210,17 @@ public class dataShowerMain : MonoBehaviour {
         {
             declarations.namesLeaderboard[i].text = fight.usersS[i].p_name;
             declarations.xpLeaderboard[i].text = fight.usersS[i].p_xp.ToString();
+            declarations.wrLeaderboard[i].text = ((100 * fight.usersS[i].p_won) / fight.usersS[i].p_played).ToString() + "%";
+        }
+        for (int i = 0; i < dataLoader.usersLength; i ++)
+        {
+            if (fight.usersS[i].p_name == login.currentUser.p_name)
+            {
+                declarations.currentPlayerRank.text = (i + 1).ToString();
+                declarations.namesLeaderboard[5].text = fight.usersS[i].p_name;
+                declarations.xpLeaderboard[5].text = fight.usersS[i].p_xp.ToString();
+                declarations.wrLeaderboard[5].text = ((100 * fight.usersS[i].p_won) / fight.usersS[i].p_played).ToString() + "%";
+            }
         }
     }
 

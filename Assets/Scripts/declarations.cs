@@ -28,7 +28,7 @@ public class declarations : MonoBehaviour {
     public InputField emailTextRegisterNS;
     #endregion
     #region Version
-    public static string version = "1.1.0.1";
+    public static string version = "1.1.1";
     public static GameObject updatePanel;
     public GameObject updatePanelNS;
     #endregion
@@ -165,10 +165,14 @@ public class declarations : MonoBehaviour {
     public GameObject[] panelsNS = new GameObject[panelsLength];
     #endregion
     #region Leaderboard
-    public Text[] namesLeaderboardNS = new Text[5];
-    public Text[] xpLeaderboardNS = new Text[5];
-    public static Text[] namesLeaderboard = new Text[5];
-    public static Text[] xpLeaderboard = new Text[5];
+    public Text[] namesLeaderboardNS = new Text[6];
+    public Text[] xpLeaderboardNS = new Text[6];
+    public Text[] wrLeaderboardNS = new Text[6];
+    public Text currentPlayerRankNS;
+    public static Text[] namesLeaderboard = new Text[6];
+    public static Text[] xpLeaderboard = new Text[6];
+    public static Text[] wrLeaderboard = new Text[6];
+    public static Text currentPlayerRank;
     #endregion
     #region Inventory Items/buttonsTBR
     public Button[] buttonsTBRNS = new Button[12];
@@ -402,11 +406,13 @@ public class declarations : MonoBehaviour {
         }
         #endregion
         #region Leaderboard
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             namesLeaderboard[i] = namesLeaderboardNS[i];
             xpLeaderboard[i] = xpLeaderboardNS[i];
+            wrLeaderboard[i] = wrLeaderboardNS[i];
         }
+        currentPlayerRank = currentPlayerRankNS;
         #endregion
         #region Inventory Items/buttonsTBR
         for (int i = 0; i < 12; i++)
