@@ -1,3 +1,5 @@
+# [CURRENTLY UNSUPPORTED] 
+
 # Colosseum
 
 This is an open-source project for an exciting turn-based online arrow-hitting game.
